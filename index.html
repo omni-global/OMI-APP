@@ -1,69 +1,70 @@
 import datetime
 
-class AISuperApp:
+class OminiSuperApp:
     def __init__(self):
+        # Global Localization Data
+        self.locale_configs = {
+            "India": {"lang": "Hindi", "currency": "INR", "sos": "112", "welcome": "Omini mein swagat hai"},
+            "USA": {"lang": "English", "currency": "USD", "sos": "911", "welcome": "Welcome to Omini"},
+            "Spain": {"lang": "Spanish", "currency": "EUR", "sos": "112", "welcome": "Bienvenido a Omini"},
+            "UAE": {"lang": "Arabic", "currency": "AED", "sos": "999", "welcome": "marhaban bik fi Omini"}
+        }
         self.user_data = {
             "language": "English",
             "location": "Global",
+            "currency": "USD",
             "is_logged_in": False
         }
 
-    # 8. User Login & Localization
-    def user_login(self, lang, loc):
-        self.user_data["language"] = lang
-        self.user_data["location"] = loc
-        self.user_data["is_logged_in"] = True
-        return f"App set to {lang} for {loc}."
+    def user_login(self, country):
+        # Desh ke hisaab se settings auto-configure karna
+        config = self.locale_configs.get(country, self.locale_configs["USA"])
+        self.user_data.update({
+            "location": country,
+            "language": config["lang"],
+            "currency": config["currency"],
+            "is_logged_in": True
+        })
+        return f"{config['welcome']}! [Location: {country}, Currency: {config['currency']}]"
 
-    # 1, 2, 9. World News, Strategy & Stats
-    def get_world_intel(self):
-        return {
-            "news": "Fetching latest world news...",
-            "strategy": "Analyzing global geopolitical shifts...",
-            "statistics": "Loading worldwide economic and population data..."
-        }
-
-    # 3, 5. Money Earning (General & Info-based)
-    def earning_engine(self, info_based=False):
-        if info_based:
-            return "Strategy: Use global market arbitrage and data analysis to trade."
-        return "Methods: Freelancing, E-commerce, and Digital Assets."
-
-    # 4. Women Safety (SOS & Tracking)
+    # 4. Global Women Safety Logic
     def trigger_sos(self, current_coords):
-        # Logic to contact nearest police station based on location
-        return f"ALERT: SOS Sent to {self.user_data['location']} Police. Tracking active at {current_coords}."
+        country = self.user_data["location"]
+        sos_number = self.locale_configs.get(country, {"sos": "911"})["sos"]
+        return f"ALERT: SOS signal sent to {country} Police ({sos_number}). Tracking active at {current_coords}."
 
-    # 6, 7. Finance: Saving, Investment & Alerts
-    def investment_manager(self, amount, risk_free=True):
-        if risk_free:
-            # Calculation: Principal * (1 + Rate/n)^(nt)
-            return "Plan: Govt Bonds/FD. Return Calculation: 7% safe annual growth. Alert: Market volatility detected, keep funds in debt."
-        return "Analyzing high-risk equity..."
+    # 6, 7. Optimized Finance with Currency support
+    def investment_manager(self, amount, years=1):
+        currency = self.user_data["currency"]
+        rate = 0.07 # 7% average safe return
+        final_val = amount * (1 + rate)**years
+        return f"Investment Plan: {currency} {final_val:,.2f} expected after {years} year(s) at 7% growth."
 
-    # 10. Email Integration
-    def read_emails(self):
-        return "Accessing encrypted inbox... Summarizing top 5 emails."
-
-    # 11, 12. Health & Mental Well-being
-    def health_wellness(self, state="tension"):
+    # 11, 12. Health & Well-being
+    def health_wellness(self):
+        # Ye feature har bhasha mein message de sakta hai
         tips = {
-            "health": "Daily: 4L water, 10k steps, balanced diet.",
-            "mental": "Tension detected: Triggering 4-7-8 breathing exercise and guided meditation."
+            "Hindi": "Sharir ke liye 4L pani aur dhyan zaroori hai.",
+            "English": "4L water and meditation is essential for health.",
+            "Spanish": "4L de agua y meditación es esencial."
         }
-        return tips
+        lang = self.user_data["language"]
+        return tips.get(lang, tips["English"])
 
-# --- Execution ---
-app = AISuperApp()
+# --- Testing Omini Worldwide ---
 
-# 8. Setting up the app
-print(app.user_login(lang="Hindi", loc="India"))
+app = OminiSuperApp()
 
-# 4. Safety First
-print(app.trigger_sos(current_coords="28.6139° N, 77.2090° E"))
-
-# 6 & 7. Investment with Alerts
+# Case 1: User in India
+print("--- User 1 (India) ---")
+print(app.user_login("India"))
+print(app.trigger_sos("28.6139° N, 77.2090° E"))
 print(app.investment_manager(10000))
+print(app.health_wellness())
 
-# 12. Stress Relief
-print(app.health_wellness()["mental"])
+print("\n--- User 2 (Spain) ---")
+# Case 2: User in Spain
+print(app.user_login("Spain"))
+print(app.trigger_sos("40.4168° N, 3.7038° W"))
+print(app.investment_manager(5000))
+print(app.health_wellness())
