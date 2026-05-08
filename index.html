@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global - The Future</title>
+    <title>Omni Global | Professional Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { text-align: center; border: 1px solid #334155; padding: 40px; border-radius: 20px; background: #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #38bdf8; font-size: 2.5rem; }
-        p { color: #94a3b8; }
-        .status { background: #10b981; color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; }
+        body { background-color: #050505; color: #ffffff; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
     </style>
 </head>
-<body>
-    <div class="container">
-        <span class="status">LIVE</span>
-        <h1>Omni Global App</h1>
-        <p>International Level Foundation Started.</p>
-        <p>Billion Dollar Vision in Progress...</p>
+<body class="p-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between items-center mb-10">
+            <h1 class="text-2xl font-bold tracking-tighter text-sky-400">OMNI GLOBAL <span class="text-white text-sm font-light ml-2">v1.0</span></h1>
+            <div class="flex items-center gap-4">
+                <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+                <span class="text-xs uppercase tracking-widest text-gray-400">Global Server: Online</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="glass p-6 rounded-2xl glow">
+                <p class="text-gray-400 text-sm">Target Revenue</p>
+                <h2 class="text-3xl font-bold mt-2">$1,000,000,000</h2>
+                <p class="text-green-400 text-xs mt-2">↑ 100% Growth Potential</p>
+            </div>
+            <div class="glass p-6 rounded-2xl">
+                <p class="text-gray-400 text-sm">Global Users</p>
+                <h2 class="text-3xl font-bold mt-2">Active Tracking</h2>
+                <p class="text-sky-400 text-xs mt-2">Live Connections: Enabled</p>
+            </div>
+            <div class="glass p-6 rounded-2xl">
+                <p class="text-gray-400 text-sm">System Health</p>
+                <h2 class="text-3xl font-bold mt-2">99.9%</h2>
+                <p class="text-purple-400 text-xs mt-2">Optimized for Scalability</p>
+            </div>
+        </div>
+
+        <div class="glass w-full p-8 rounded-3xl text-center">
+            <h3 class="text-xl font-semibold mb-4">Phase 2: Data Intelligence</h3>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">Hum ab isme real-time filters aur world-wide statistics integrate karne ke liye taiyaar hain.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-sky-500 hover:bg-sky-600 text-black font-bold py-3 px-8 rounded-full transition-all">
+                    Generate Report
+                </button>
+                <button class="border border-white/20 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition-all">
+                    Market Analysis
+                </button>
+            </div>
+        </div>
+
+        <p class="text-center text-gray-600 text-xs mt-12 italic">Powered by Omni Intelligence © 2026</p>
     </div>
 </body>
 </html>
