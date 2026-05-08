@@ -3,84 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global | World Intelligence</title>
+    <title>Omni Global | World Solution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-hover:hover { border-color: #38bdf8; transform: translateY(-5px); transition: all 0.3s; }
+        body { background: #020617; color: #f8fafc; font-family: sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .sos-alert { background: linear-gradient(to right, #ef4444, #b91c1c); animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
     </style>
 </head>
-<body class="p-4">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-            <h1 class="text-2xl font-bold text-sky-400">OMNI GLOBAL <span class="text-xs text-gray-500">v3.0</span></h1>
-            <button onclick="window.location.href='tel:112'" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm animate-pulse">SOS EMERGENCY</button>
-        </div>
-
-        <div class="glass p-8 rounded-3xl mb-10 text-center border-sky-500/30">
-            <h2 class="text-3xl font-bold mb-4">World Problem Solver</h2>
-            <div class="max-w-2xl mx-auto relative">
-                <input type="text" id="mainInput" placeholder="Paisa, Knowledge ya Security... kya chahiye?" class="w-full p-5 bg-black/50 border border-white/20 rounded-2xl outline-none focus:border-sky-500">
-                <button onclick="globalSolve()" class="absolute right-2 top-2 bg-sky-500 text-black px-6 py-3 rounded-xl font-bold">SOLVE</button>
-            </div>
-            <div id="displayArea" class="hidden mt-6 p-6 bg-white/5 rounded-2xl text-left border border-white/10"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass p-6 rounded-3xl">
-                <h3 class="text-xl font-bold text-sky-400 mb-4 flex items-center gap-2">🌍 Global News Live</h3>
-                <div class="space-y-4">
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-sky-500">
-                        <p class="text-sm font-bold text-gray-300 italic">Breaking: AI Market hits new record high...</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-green-500">
-                        <p class="text-sm">New Digital Economy trends emerging in Europe and Asia.</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-purple-500">
-                        <p class="text-sm text-gray-400">World technology updates: 6G testing started in research hubs.</p>
-                    </div>
+<body class="p-4 md:p-10">
+    <div class="max-w-4xl mx-auto">
+        
+        <div class="glass p-6 rounded-3xl mb-8 border-red-500/30">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-red-500 font-black text-xl">WORLDWIDE WOMEN SECURITY</h2>
+                    <p class="text-gray-400 text-xs">Emergency Help & Live Tracking Active</p>
                 </div>
+                <button onclick="window.location.href='tel:112'" class="sos-alert text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-red-500/50">
+                    SOS HELP
+                </button>
             </div>
+        </div>
 
+        <div class="glass p-8 rounded-[2.5rem] mb-10 border-sky-500/30">
+            <h3 class="text-center text-sky-400 font-bold mb-6 italic tracking-widest uppercase text-sm">Omni Global Intelligence</h3>
+            <div class="flex flex-col gap-4">
+                <input type="text" id="userInput" placeholder="Paisa kaise kamaye? Ya koi pareshani..." class="w-full p-5 bg-black/50 border border-white/20 rounded-2xl outline-none focus:border-sky-500 text-lg">
+                <button onclick="solve()" class="w-full bg-sky-500 text-black font-black py-4 rounded-2xl hover:bg-sky-400 transition-all">GET SOLUTION NOW</button>
+            </div>
+            
+            <div id="result" class="hidden mt-8 p-6 bg-sky-500/10 border border-sky-500/30 rounded-2xl animate-fade-in">
+                <p id="resultText" class="text-gray-100 leading-relaxed"></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass p-6 rounded-3xl">
-                <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center gap-2">💰 Wealth Intelligence</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-black/40 rounded-2xl card-hover cursor-pointer" onclick="alert('Opening Global Market Analysis...')">
-                        <p class="text-xs text-gray-500">Daily Goal</p>
-                        <p class="text-lg font-bold text-green-400">$10,000</p>
-                    </div>
-                    <div class="p-4 bg-black/40 rounded-2xl card-hover cursor-pointer" onclick="alert('Opening Crypto/Stock Insights...')">
-                        <p class="text-xs text-gray-500">Market Status</p>
-                        <p class="text-lg font-bold text-sky-400 text-white">BULLISH</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs mt-6 italic">Insaan ki har financial problem ka hal ab ek dashboard par.</p>
+                <h4 class="text-sky-400 font-bold mb-4">🌍 World News</h4>
+                <p class="text-sm text-gray-400">Global Economy is shifting to Digital Assets. AI is creating new wealth in 2026.</p>
+            </div>
+            <div class="glass p-6 rounded-3xl">
+                <h4 class="text-green-500 font-bold mb-4">💰 Money Solution</h4>
+                <p class="text-sm text-gray-400">Current Best: Global Freelancing & AI Automation. Target: $10,000/month.</p>
             </div>
         </div>
 
-        <div class="mt-20 text-center text-gray-600 text-[10px] tracking-widest uppercase pb-10">
-            Omni Global Intelligence System • 2026 World Network
-        </div>
     </div>
 
     <script>
-        function globalSolve() {
-            const input = document.getElementById('mainInput').value.toLowerCase();
-            const display = document.getElementById('displayArea');
-            display.classList.remove('hidden');
+        function solve() {
+            const val = document.getElementById('userInput').value.toLowerCase();
+            const res = document.getElementById('result');
+            const txt = document.getElementById('resultText');
 
-            if(input.includes('paisa') || input.includes('money')) {
-                display.innerHTML = `
-                    <h4 class="text-green-400 font-bold mb-2">Wealth Solution Found:</h4>
-                    <ul class="list-disc ml-5 text-gray-300 space-y-2">
-                        <li><b>Phase 1:</b> Digital Real Estate (Domains & Social Assets) build karein.</li>
-                        <li><b>Phase 2:</b> High-ticket Skill acquisition (AI Management).</li>
-                        <li><b>Phase 3:</b> Global Market Liquidity se profit nikalna.</li>
-                    </ul>
-                `;
+            res.style.display = 'block'; // Forcefully show the box
+
+            if (val.includes('paisa') || val.includes('money') || val.includes('kamaye')) {
+                txt.innerHTML = "<b>Money Problem Solved:</b> 2026 mein paisa kamane ke 3 bade raste: <br>1. Global AI Agency kholiye. <br>2. Digital Products banaiye. <br>3. International Market Trading. Hum aapko iska pura roadmap denge.";
+            } else if (val.includes('security') || val.includes('women')) {
+                txt.innerHTML = "<b>Security Protocol:</b> Aapka SOS system direct International Help Center se juda hai. Aapki location 112 par notify kar di gayi hai. Safe rahein.";
             } else {
-                display.innerHTML = `<p class="text-sky-300 animate-pulse">Omni AI is scanning world databases for: "${input}"...</p>`;
+                txt.innerHTML = "Omni AI is searching for your specific problem: '" + val + "'. Hum duniya bhar ke database se best solution nikal rahe hain. Thoda intezar karein.";
             }
         }
     </script>
