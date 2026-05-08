@@ -3,57 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global | Professional Dashboard</title>
+    <title>Omni Global | Solution Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #050505; color: #ffffff; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glow { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+        body { background: radial-gradient(circle at top, #1e293b 0%, #050505 100%); color: #ffffff; min-height: 100vh; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-text { text-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        .input-glow:focus { box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); outline: none; border-color: #38bdf8; }
     </style>
 </head>
-<body class="p-6">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="text-2xl font-bold tracking-tighter text-sky-400">OMNI GLOBAL <span class="text-white text-sm font-light ml-2">v1.0</span></h1>
-            <div class="flex items-center gap-4">
-                <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
-                <span class="text-xs uppercase tracking-widest text-gray-400">Global Server: Online</span>
-            </div>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-black tracking-tighter text-sky-400 glow-text mb-2 text-white">OMNI GLOBAL ENGINE</h1>
+            <p class="text-gray-400">Duniya ka saara knowledge aur aapki har problem ka hal, ek hi jagah.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="glass p-6 rounded-2xl glow">
-                <p class="text-gray-400 text-sm">Target Revenue</p>
-                <h2 class="text-3xl font-bold mt-2">$1,000,000,000</h2>
-                <p class="text-green-400 text-xs mt-2">↑ 100% Growth Potential</p>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <p class="text-gray-400 text-sm">Global Users</p>
-                <h2 class="text-3xl font-bold mt-2">Active Tracking</h2>
-                <p class="text-sky-400 text-xs mt-2">Live Connections: Enabled</p>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <p class="text-gray-400 text-sm">System Health</p>
-                <h2 class="text-3xl font-bold mt-2">99.9%</h2>
-                <p class="text-purple-400 text-xs mt-2">Optimized for Scalability</p>
-            </div>
-        </div>
-
-        <div class="glass w-full p-8 rounded-3xl text-center">
-            <h3 class="text-xl font-semibold mb-4">Phase 2: Data Intelligence</h3>
-            <p class="text-gray-400 mb-8 max-w-md mx-auto">Hum ab isme real-time filters aur world-wide statistics integrate karne ke liye taiyaar hain.</p>
-            
-            <div class="flex flex-wrap justify-center gap-4">
-                <button class="bg-sky-500 hover:bg-sky-600 text-black font-bold py-3 px-8 rounded-full transition-all">
-                    Generate Report
-                </button>
-                <button class="border border-white/20 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition-all">
-                    Market Analysis
+        <div class="glass p-8 rounded-[2rem] mb-12 shadow-2xl">
+            <h2 class="text-xl font-bold mb-6 text-center text-sky-300">Apni pareshani ya sawal yahan likhein</h2>
+            <div class="relative group">
+                <input type="text" 
+                    placeholder="Jaise: Paisa kaise kamaye? Ya koi life problem..." 
+                    class="w-full p-5 bg-black/40 border border-white/10 rounded-2xl text-lg input-glow transition-all text-white placeholder-gray-500">
+                <button class="absolute right-3 top-3 bg-sky-500 hover:bg-sky-400 text-black font-bold py-2 px-6 rounded-xl transition-all">
+                    SOLVE
                 </button>
             </div>
+            <p class="text-center text-xs text-gray-500 mt-4 italic italic">Tip: Aap 'Money', 'Health' ya 'Global Markets' ke baare mein pooch sakte hain.</p>
         </div>
 
-        <p class="text-center text-gray-600 text-xs mt-12 italic">Powered by Omni Intelligence © 2026</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass p-6 rounded-3xl hover:bg-white/5 transition-all cursor-pointer">
+                <div class="text-3xl mb-4">💰</div>
+                <h3 class="text-lg font-bold text-sky-400 mb-2">Money Problem</h3>
+                <p class="text-gray-400 text-sm">Karza khatam karne aur naye global income sources dhoondhne ke tools.</p>
+            </div>
+
+            <div class="glass p-6 rounded-3xl hover:bg-white/5 transition-all cursor-pointer border-sky-500/30">
+                <div class="text-3xl mb-4">🌍</div>
+                <h3 class="text-lg font-bold text-sky-400 mb-2">World Knowledge</h3>
+                <p class="text-gray-400 text-sm">Duniya bhar ki education aur technical information ka sabse bada vault.</p>
+            </div>
+
+            <div class="glass p-6 rounded-3xl hover:bg-white/5 transition-all cursor-pointer">
+                <div class="text-3xl mb-4">🧠</div>
+                <h3 class="text-lg font-bold text-sky-400 mb-2">Life Guide</h3>
+                <p class="text-gray-400 text-sm">Personal problems, mental peace aur decision-making mein expert guidance.</p>
+            </div>
+        </div>
+
+        <div class="mt-16 flex justify-between items-center border-t border-white/10 pt-6">
+            <div class="text-left">
+                <p class="text-xs text-gray-500 uppercase tracking-widest">Active Solutions Provided</p>
+                <p class="text-xl font-bold text-sky-400">452,189+</p>
+            </div>
+            <div class="text-right">
+                <p class="text-xs text-gray-400 uppercase tracking-widest">System Status</p>
+                <p class="text-green-400 font-bold">READY TO HELP</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
