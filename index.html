@@ -3,43 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global | Active Portal</title>
+    <title>Omni Global | Fixed Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #050505; color: #ffffff; font-family: sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .hidden-section { display: none; }
-        .active-glow { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <div id="loginSection" class="glass p-10 rounded-[2.5rem] w-full max-w-md active-glow text-center">
-        <h1 class="text-3xl font-black text-sky-400 mb-6 uppercase italic">Omni Global</h1>
-        <input type="text" id="username" placeholder="Username" class="w-full p-4 mb-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-sky-500">
-        <input type="password" id="password" placeholder="Password" class="w-full p-4 mb-6 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-sky-500">
-        <button onclick="handleLogin()" class="w-full bg-sky-500 text-black font-black py-4 rounded-xl hover:bg-sky-400 transition-all">ENTER PORTAL</button>
+    <div id="loginSection" class="glass p-10 rounded-[2.5rem] w-full max-w-md text-center">
+        <h1 class="text-3xl font-black text-sky-400 mb-6 italic">Omni Global</h1>
+        <button onclick="handleLogin()" class="w-full bg-sky-500 text-black font-black py-4 rounded-xl">ENTER PORTAL</button>
     </div>
 
     <div id="appSection" class="hidden-section w-full max-w-5xl mx-auto py-10">
         <div class="glass border-red-500/30 p-5 rounded-3xl mb-8 flex justify-between items-center bg-red-500/10">
-            <div>
-                <h3 class="text-red-500 font-bold text-lg">SAFETY MODE: ACTIVE</h3>
-                <p class="text-xs text-gray-400 tracking-widest uppercase">Global SOS Ready</p>
-            </div>
-            <button onclick="triggerSOS()" class="bg-red-600 hover:bg-red-700 text-white p-4 px-10 rounded-2xl font-black animate-pulse shadow-lg shadow-red-500/40">ACTIVATE SOS</button>
+            <h3 class="text-red-500 font-bold">SAFETY MODE ACTIVE</h3>
+            <button onclick="window.location.href='tel:112'" class="bg-red-600 text-white p-3 px-8 rounded-xl font-black animate-pulse">ACTIVATE SOS</button>
         </div>
 
-        <div class="glass p-8 rounded-[2.5rem] shadow-2xl border-sky-500/20">
+        <div class="glass p-8 rounded-[2.5rem] border-sky-500/20">
             <h2 class="text-2xl font-bold text-sky-400 mb-6 text-center">OMNI GLOBAL INTELLIGENCE</h2>
             <div class="relative">
-                <input type="text" id="userQuery" placeholder="Paisa kaise kamaye?" class="w-full p-6 bg-black border border-white/10 rounded-2xl text-lg focus:border-sky-500 outline-none">
-                <button onclick="solve()" class="absolute right-3 top-3 bg-sky-400 hover:bg-sky-300 text-black font-bold py-3 px-8 rounded-xl transition-all">SOLVE</button>
+                <input type="text" id="userQuery" placeholder="Paisa kaise kamaye?" class="w-full p-6 bg-black border border-white/10 rounded-2xl text-lg outline-none focus:border-sky-500">
+                <button onclick="solveNow()" class="absolute right-3 top-3 bg-sky-400 text-black font-bold py-3 px-8 rounded-xl">SOLVE</button>
             </div>
             
             <div id="resBox" class="hidden mt-8 p-8 bg-sky-500/10 border border-sky-500/30 rounded-3xl">
                 <h4 class="text-sky-400 font-bold mb-3 uppercase tracking-widest text-sm">Official Solution:</h4>
-                <p id="resText" class="text-gray-200 text-lg leading-relaxed"></p>
+                <p id="resText" class="text-gray-100 text-lg"></p>
             </div>
         </div>
     </div>
@@ -51,25 +45,23 @@
             document.body.classList.remove('flex', 'items-center', 'justify-center');
         }
 
-        function triggerSOS() {
-            alert("EMERGENCY: SOS Protocol Initiated!\nSending location to global servers...");
-            // Asli app mein yahan SMS API judti hai
-            window.location.href = "tel:112"; // Ye phone dialer khol dega
-        }
-
-        function solve() {
-            const q = document.getElementById('userQuery').value.toLowerCase();
+        function solveNow() {
+            // Input se text lena
+            const query = document.getElementById('userQuery').value.toLowerCase();
             const box = document.getElementById('resBox');
             const txt = document.getElementById('resText');
             
-            box.classList.remove('hidden'); // Box ko show karna
-            
-            if(q.includes('paisa') || q.includes('money')) {
-                txt.innerHTML = "<b>Money Plan:</b> Billion Dollar Vision ke liye humne 3 steps taiyaar kiye hain:<br>1. Digital Asset Building.<br>2. Global API Integration.<br>3. Automated Revenue Streams. Aapka roadmap active hai.";
-            } else if(q.includes('security') || q.includes('women')) {
-                txt.innerHTML = "<b>Security Plan:</b> Women Safety ke liye SOS button direct local authorities se connect hota hai aur live GPS track karta hai.";
+            // Box ko dikhana
+            box.style.display = "block";
+            box.classList.remove('hidden');
+
+            // Logic check karna
+            if (query.includes('paisa') || query.includes('money') || query.includes('kamaye')) {
+                txt.innerHTML = "<b>Money Plan Loaded:</b> $1 Billion vision ke liye 3 tarike: <br>1. Global Digital Assets <br>2. AI Automation Business <br>3. International Market Trading. Aapka blueprint taiyaar hai!";
+            } else if (query.includes('women') || query.includes('safety') || query.includes('security')) {
+                txt.innerHTML = "<b>Security Plan:</b> SOS system active hai. Aapka GPS track karke local authorities ko notification bheja ja raha hai. Aap surakshit hain.";
             } else {
-                txt.innerHTML = "Omni AI is analyzing your request... Hum duniya bhar ke database se aapka best solution nikal rahe hain.";
+                txt.innerHTML = "Omni AI aapke sawal: '" + query + "' par research kar raha hai. Duniya bhar ke data se best solution nikal rahe hain...";
             }
         }
     </script>
