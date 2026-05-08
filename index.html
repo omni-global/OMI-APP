@@ -3,71 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global | Security & Solutions</title>
+    <title>Omni Global | Login & Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: radial-gradient(circle at top, #1e293b 0%, #050505 100%); color: #ffffff; min-height: 100vh; }
+        body { background: #050505; color: #ffffff; font-family: sans-serif; overflow-x: hidden; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .sos-glow { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .glow-sky { box-shadow: 0 0 30px rgba(56, 189, 248, 0.2); }
+        .hidden-section { display: none; }
     </style>
 </head>
-<body class="p-4 md:p-10">
-    <div class="max-w-5xl mx-auto">
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div id="loginSection" class="glass p-10 rounded-[2.5rem] w-full max-w-md glow-sky text-center transition-all">
+        <h1 class="text-3xl font-black text-sky-400 mb-2 uppercase tracking-tighter">Omni Global</h1>
+        <p class="text-gray-500 text-sm mb-8">Duniya ka sabse powerful solution engine.</p>
         
-        <div class="glass border-red-500/30 p-4 rounded-2xl mb-8 flex justify-between items-center bg-red-500/5">
-            <div class="flex items-center gap-3">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                </span>
-                <p class="text-red-400 font-bold text-sm tracking-widest uppercase">Women Security Active</p>
-            </div>
-            <button onclick="alert('SOS Alert Sent to Nearby Authorities!')" class="bg-red-600 hover:bg-red-700 text-white text-xs font-black py-2 px-6 rounded-full sos-glow transition-all">
-                EMERGENCY SOS
+        <div class="space-y-4">
+            <input type="text" id="username" placeholder="Username" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-sky-500 transition-all">
+            <input type="password" id="password" placeholder="Password" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-sky-500 transition-all">
+            <button onclick="handleLogin()" class="w-full bg-sky-500 hover:bg-sky-400 text-black font-black py-4 rounded-xl transition-all tracking-widest mt-4">
+                ENTER PORTAL
             </button>
         </div>
-
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-black tracking-tighter text-sky-400 mb-2">OMNI GLOBAL ENGINE</h1>
-            <p class="text-gray-400">Problem chahe Money ki ho ya Security ki, solution yahan hai.</p>
-        </div>
-
-        <div class="glass p-8 rounded-[2rem] mb-12 shadow-2xl">
-            <h2 class="text-xl font-bold mb-6 text-center text-sky-300 font-light">Global Intelligence Search</h2>
-            <div class="relative group">
-                <input type="text" placeholder="Type your problem here..." class="w-full p-5 bg-black/40 border border-white/10 rounded-2xl text-lg focus:ring-2 focus:ring-sky-500 outline-none transition-all">
-                <button class="absolute right-3 top-3 bg-sky-500 text-black font-bold py-2 px-6 rounded-xl">SOLVE</button>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass p-6 rounded-3xl border-red-500/20 hover:bg-red-500/5 transition-all">
-                <div class="text-3xl mb-4 text-red-500">🛡️</div>
-                <h3 class="text-lg font-bold text-red-400 mb-2">Women Safety</h3>
-                <p class="text-gray-400 text-sm">Global emergency help, live tracking aur safety protocols.</p>
-            </div>
-
-            <div class="glass p-6 rounded-3xl hover:bg-white/5">
-                <div class="text-3xl mb-4">💰</div>
-                <h3 class="text-lg font-bold text-sky-400 mb-2">Money Mastery</h3>
-                <p class="text-gray-400 text-sm">International wealth building aur career guidance.</p>
-            </div>
-
-            <div class="glass p-6 rounded-3xl hover:bg-white/5">
-                <div class="text-3xl mb-4">🌍</div>
-                <h3 class="text-lg font-bold text-sky-400 mb-2">World Vault</h3>
-                <p class="text-gray-400 text-sm">Har desh ki knowledge aur tech updates ek click par.</p>
-            </div>
-
-            <div class="glass p-6 rounded-3xl hover:bg-white/5">
-                <div class="text-3xl mb-4">🧠</div>
-                <h3 class="text-lg font-bold text-sky-400 mb-2">Mind & Body</h3>
-                <p class="text-gray-400 text-sm">Mental peace aur physical health ke global standards.</p>
-            </div>
-        </div>
-
-        <p class="text-center text-gray-600 text-xs mt-12">Omni Security Protocol v2.0 | 2026</p>
+        <p class="text-[10px] text-gray-600 mt-6 uppercase tracking-widest">Secure International Access</p>
     </div>
+
+    <div id="appSection" class="hidden-section w-full max-w-5xl mx-auto py-10">
+        <div class="glass border-red-500/30 p-5 rounded-3xl mb-8 flex justify-between items-center bg-red-500/5">
+            <div>
+                <h3 class="text-red-500 font-bold">SAFETY MODE ACTIVE</h3>
+                <p class="text-xs text-gray-400">Location tracking enabled</p>
+            </div>
+            <button onclick="alert('SOS SENT!')" class="bg-red-600 p-3 px-8 rounded-full font-bold text-sm animate-pulse">ACTIVATE SOS</button>
+        </div>
+
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-black text-sky-400 tracking-tighter">WELCOME TO OMNI AI</h2>
+            <p class="text-gray-500">Apni problem likhein aur solution payein.</p>
+        </div>
+
+        <div class="glass p-8 rounded-[2.5rem] shadow-2xl">
+            <div class="relative">
+                <input type="text" id="userQuery" placeholder="Paisa kaise kamaye? Problem kya hai?" class="w-full p-5 bg-black/60 border border-white/10 rounded-2xl text-lg outline-none">
+                <button onclick="solve()" class="absolute right-3 top-3 bg-sky-500 text-black font-bold py-2 px-6 rounded-xl">SOLVE</button>
+            </div>
+            <div id="resBox" class="hidden mt-6 p-6 bg-sky-500/10 border border-sky-500/20 rounded-2xl">
+                <p id="resText" class="text-gray-200"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LOGIN LOGIC
+        function handleLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user !== "" && pass !== "") {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('appSection').classList.remove('hidden-section');
+                document.body.classList.remove('flex', 'items-center', 'justify-center');
+            } else {
+                alert("Please enter Username and Password");
+            }
+        }
+
+        // AI LOGIC
+        function solve() {
+            const q = document.getElementById('userQuery').value.toLowerCase();
+            const box = document.getElementById('resBox');
+            const txt = document.getElementById('resText');
+            box.classList.remove('hidden');
+
+            if(q.includes('paisa') || q.includes('money')) {
+                txt.innerHTML = "<b>Money Plan:</b> Global market tracking active. $1B roadmap: Focus on AI Automation.";
+            } else {
+                txt.innerHTML = "<b>Omni Intelligence:</b> Analyzing your problem in our global database...";
+            }
+        }
+    </script>
 </body>
 </html>
