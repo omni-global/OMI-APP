@@ -3,82 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omni Global | Login & Portal</title>
+    <title>Omni Global | Active Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #050505; color: #ffffff; font-family: sans-serif; overflow-x: hidden; }
+        body { background: #050505; color: #ffffff; font-family: sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glow-sky { box-shadow: 0 0 30px rgba(56, 189, 248, 0.2); }
         .hidden-section { display: none; }
+        .active-glow { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <div id="loginSection" class="glass p-10 rounded-[2.5rem] w-full max-w-md glow-sky text-center transition-all">
-        <h1 class="text-3xl font-black text-sky-400 mb-2 uppercase tracking-tighter">Omni Global</h1>
-        <p class="text-gray-500 text-sm mb-8">Duniya ka sabse powerful solution engine.</p>
-        
-        <div class="space-y-4">
-            <input type="text" id="username" placeholder="Username" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-sky-500 transition-all">
-            <input type="password" id="password" placeholder="Password" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-sky-500 transition-all">
-            <button onclick="handleLogin()" class="w-full bg-sky-500 hover:bg-sky-400 text-black font-black py-4 rounded-xl transition-all tracking-widest mt-4">
-                ENTER PORTAL
-            </button>
-        </div>
-        <p class="text-[10px] text-gray-600 mt-6 uppercase tracking-widest">Secure International Access</p>
+    <div id="loginSection" class="glass p-10 rounded-[2.5rem] w-full max-w-md active-glow text-center">
+        <h1 class="text-3xl font-black text-sky-400 mb-6 uppercase italic">Omni Global</h1>
+        <input type="text" id="username" placeholder="Username" class="w-full p-4 mb-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-sky-500">
+        <input type="password" id="password" placeholder="Password" class="w-full p-4 mb-6 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-sky-500">
+        <button onclick="handleLogin()" class="w-full bg-sky-500 text-black font-black py-4 rounded-xl hover:bg-sky-400 transition-all">ENTER PORTAL</button>
     </div>
 
     <div id="appSection" class="hidden-section w-full max-w-5xl mx-auto py-10">
-        <div class="glass border-red-500/30 p-5 rounded-3xl mb-8 flex justify-between items-center bg-red-500/5">
+        <div class="glass border-red-500/30 p-5 rounded-3xl mb-8 flex justify-between items-center bg-red-500/10">
             <div>
-                <h3 class="text-red-500 font-bold">SAFETY MODE ACTIVE</h3>
-                <p class="text-xs text-gray-400">Location tracking enabled</p>
+                <h3 class="text-red-500 font-bold text-lg">SAFETY MODE: ACTIVE</h3>
+                <p class="text-xs text-gray-400 tracking-widest uppercase">Global SOS Ready</p>
             </div>
-            <button onclick="alert('SOS SENT!')" class="bg-red-600 p-3 px-8 rounded-full font-bold text-sm animate-pulse">ACTIVATE SOS</button>
+            <button onclick="triggerSOS()" class="bg-red-600 hover:bg-red-700 text-white p-4 px-10 rounded-2xl font-black animate-pulse shadow-lg shadow-red-500/40">ACTIVATE SOS</button>
         </div>
 
-        <div class="text-center mb-10">
-            <h2 class="text-4xl font-black text-sky-400 tracking-tighter">WELCOME TO OMNI AI</h2>
-            <p class="text-gray-500">Apni problem likhein aur solution payein.</p>
-        </div>
-
-        <div class="glass p-8 rounded-[2.5rem] shadow-2xl">
+        <div class="glass p-8 rounded-[2.5rem] shadow-2xl border-sky-500/20">
+            <h2 class="text-2xl font-bold text-sky-400 mb-6 text-center">OMNI GLOBAL INTELLIGENCE</h2>
             <div class="relative">
-                <input type="text" id="userQuery" placeholder="Paisa kaise kamaye? Problem kya hai?" class="w-full p-5 bg-black/60 border border-white/10 rounded-2xl text-lg outline-none">
-                <button onclick="solve()" class="absolute right-3 top-3 bg-sky-500 text-black font-bold py-2 px-6 rounded-xl">SOLVE</button>
+                <input type="text" id="userQuery" placeholder="Paisa kaise kamaye?" class="w-full p-6 bg-black border border-white/10 rounded-2xl text-lg focus:border-sky-500 outline-none">
+                <button onclick="solve()" class="absolute right-3 top-3 bg-sky-400 hover:bg-sky-300 text-black font-bold py-3 px-8 rounded-xl transition-all">SOLVE</button>
             </div>
-            <div id="resBox" class="hidden mt-6 p-6 bg-sky-500/10 border border-sky-500/20 rounded-2xl">
-                <p id="resText" class="text-gray-200"></p>
+            
+            <div id="resBox" class="hidden mt-8 p-8 bg-sky-500/10 border border-sky-500/30 rounded-3xl">
+                <h4 class="text-sky-400 font-bold mb-3 uppercase tracking-widest text-sm">Official Solution:</h4>
+                <p id="resText" class="text-gray-200 text-lg leading-relaxed"></p>
             </div>
         </div>
     </div>
 
     <script>
-        // LOGIN LOGIC
         function handleLogin() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            if(user !== "" && pass !== "") {
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('appSection').classList.remove('hidden-section');
-                document.body.classList.remove('flex', 'items-center', 'justify-center');
-            } else {
-                alert("Please enter Username and Password");
-            }
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('appSection').classList.remove('hidden-section');
+            document.body.classList.remove('flex', 'items-center', 'justify-center');
         }
 
-        // AI LOGIC
+        function triggerSOS() {
+            alert("EMERGENCY: SOS Protocol Initiated!\nSending location to global servers...");
+            // Asli app mein yahan SMS API judti hai
+            window.location.href = "tel:112"; // Ye phone dialer khol dega
+        }
+
         function solve() {
             const q = document.getElementById('userQuery').value.toLowerCase();
             const box = document.getElementById('resBox');
             const txt = document.getElementById('resText');
-            box.classList.remove('hidden');
-
+            
+            box.classList.remove('hidden'); // Box ko show karna
+            
             if(q.includes('paisa') || q.includes('money')) {
-                txt.innerHTML = "<b>Money Plan:</b> Global market tracking active. $1B roadmap: Focus on AI Automation.";
+                txt.innerHTML = "<b>Money Plan:</b> Billion Dollar Vision ke liye humne 3 steps taiyaar kiye hain:<br>1. Digital Asset Building.<br>2. Global API Integration.<br>3. Automated Revenue Streams. Aapka roadmap active hai.";
+            } else if(q.includes('security') || q.includes('women')) {
+                txt.innerHTML = "<b>Security Plan:</b> Women Safety ke liye SOS button direct local authorities se connect hota hai aur live GPS track karta hai.";
             } else {
-                txt.innerHTML = "<b>Omni Intelligence:</b> Analyzing your problem in our global database...";
+                txt.innerHTML = "Omni AI is analyzing your request... Hum duniya bhar ke database se aapka best solution nikal rahe hain.";
             }
         }
     </script>
